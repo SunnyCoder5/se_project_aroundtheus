@@ -117,6 +117,7 @@
 
   .profile__add-button {
     margin: 36px 0 0;
+    max-width: 282px;
     width: 100%;
   }
 
