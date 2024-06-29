@@ -15,7 +15,9 @@
   flex-direction: row;
   box-sizing: border-box;
   align-items: center;
-  margin: auto 20px 20px;
+  justify-content: space-between;
+  margin: 25px 20px 25px 20px;
+  padding: 0;
 }
 
 .card__title {
@@ -35,9 +37,10 @@
   width: 21px;
   height: 18px;
   border: none;
-  margin-left: auto;
   color: black;
   cursor: pointer;
+  margin: 0;
+  flex-shrink: 0;
 }
 
 .card__like-button:hover {

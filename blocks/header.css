@@ -9,9 +9,10 @@
   .header {
     padding-bottom: 32px;
     margin-top: 32px;
+    max-height: 56px;
   }
   .header__image {
-    min-width: 126px;
-    min-height: 24px;
+    width: 126px;
+    height: 24px;
   }
 }
