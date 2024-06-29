@@ -14,3 +14,7 @@ This is the third project of the Software Engineering program at TripleTen. It w
 ###
 
 Link to the project https://sunnycoder5.github.io/se_project_aroundtheus/
+
+#### Link to the video
+
+https://drive.google.com/file/d/1iQci7ItPotJn8g8y3dsivtjzOYDEC1EG/view?usp=drive_link
