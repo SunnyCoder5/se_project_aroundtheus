@@ -12,3 +12,9 @@
   margin: 0;
   justify-content: center;
 }
+
+@media screen and (max-width: 480px) {
+  .cards {
+    padding-top: 36px;
+  }
+}

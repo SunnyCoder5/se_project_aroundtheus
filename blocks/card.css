@@ -1,12 +1,9 @@
 .card {
   background-color: white;
-  font-family: "Inter", Arial, sans-serif;
-  color: black;
-  font-weight: 900;
-  font-size: 24px;
   border-radius: 10px;
   box-sizing: border-box;
 }
+
 .card__image {
   width: 282px;
   height: 282px;
@@ -16,28 +13,33 @@
 .card__description {
   display: flex;
   flex-direction: row;
-  height: 79px;
   box-sizing: border-box;
   align-items: center;
   margin: auto 20px 20px;
 }
 
 .card__title {
+  font-family: "Inter", Arial, sans-serif;
+  color: black;
+  font-weight: 900;
+  font-size: 24px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
   max-width: 219px;
   margin: 0;
 }
+
 .card__like-button {
-  background: transparent url(../images/like-inactive.svg) center no-repeat;
+  background: transparent url(../images/like-active.svg) center no-repeat;
   width: 21px;
   height: 18px;
   border: none;
   margin-left: auto;
   color: black;
+  cursor: pointer;
 }
 
 .card__like-button:hover {
-  opacity: 50%;
+  background: transparent url(../images/like-inactive.svg) center no-repeat;
 }

@@ -11,7 +11,7 @@
   height: 120px;
   border-radius: 50%;
   object-fit: cover;
-  background-position: center;
+  object-position: center;
   margin-right: 30px;
 }
 
@@ -44,6 +44,7 @@
   grid-area: button;
   margin-left: 18px;
   margin-right: auto;
+  cursor: pointer;
 }
 
 .profile__edit-button:hover {
@@ -55,8 +56,10 @@
   min-width: 150px;
   height: 50px;
   border: 2px solid #ffffff;
+  border-radius: 2px;
   margin-left: auto;
   padding: 0;
+  cursor: pointer;
 }
 
 .profile__add-button:hover {
@@ -119,5 +122,12 @@
 
   .profile__image {
     margin-right: 0;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .profile__title {
+    font-size: 22px;
+    line-height: 26px;
   }
 }

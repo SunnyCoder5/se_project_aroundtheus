@@ -10,3 +10,7 @@ This is the third project of the Software Engineering program at TripleTen. It w
 - Positioning
 - Flat BEM file structure
 - Responsive design
+
+###
+
+Link to the project https://sunnycoder5.github.io/se_project_aroundtheus/
