@@ -1,0 +1,125 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  padding: 36px;
+  display: none;
+}
+
+.modal_opened {
+  display: flex;
+}
+
+.modal__container {
+  position: relative;
+  background-color: #ffffff;
+  margin: auto;
+  border-radius: 10px;
+  width: 430px;
+  height: 330px;
+}
+
+.modal__container-close {
+  background: transparent url(../images/close-icon.svg) no-repeat;
+  border: none;
+  position: absolute;
+  bottom: calc(100% + 5px);
+  left: calc(100% + 5px);
+  width: 40px;
+  height: 40px;
+}
+
+.modal__title {
+  font-family: "Inter", Arial, sans-serif;
+  color: black;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  margin-top: 34px;
+  margin-left: 36px;
+  margin-bottom: 54px;
+}
+
+.modal__form {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal__form-input {
+  height: 27px;
+  width: 358px;
+  margin-top: 30px;
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.modal__form-input:focus {
+  outline: none;
+}
+
+.modal__form-input:first-of-type {
+  margin-top: 0;
+}
+
+input::-webkit-input-placeholder {
+  color: #838383;
+  font-size: 14px;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+}
+
+input::-moz-placeholder {
+  color: #838383;
+  font-size: 14px;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+}
+
+input::-ms-input-placeholder {
+  color: #838383;
+  font-size: 14px;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+}
+
+.modal__form-button {
+  background-color: black;
+  width: 358px;
+  height: 50px;
+  color: #ffffff;
+  margin-top: 48px;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  border-radius: 2px;
+}
+
+@media screen and (max-width: 480px) {
+  .modal__container {
+    width: 282px;
+    height: 322px;
+  }
+
+  .modal__title {
+    margin-top: 25px;
+    margin-bottom: 75px;
+    margin-left: 22px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+  .modal__form-input {
+    width: 238px;
+  }
+  .modal__form-button {
+    width: 238px;
+    margin-top: 27px;
+  }
+}
