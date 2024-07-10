@@ -1,94 +1,45 @@
-let initialCards = [
+const initialCards = [
   {
     name: "Antelope Canyon",
-    link: url(
-      unsplash.com / photos / white -
-        and -
-        blue -
-        abstract -
-        painting -
-        NSh0nzT79_Q
-    ),
+    link: "https://unsplash.com/photos/antelope-canyon-arizona-4VeSnxkrNAM",
   },
 
   {
     name: "New York City",
-    link: url(
-      unsplash.com / photos / a -
-        view -
-        of -
-        a -
-        city -
-        at -
-        night -
-        from -
-        the -
-        top -
-        of -
-        a -
-        building -
-        wxskcYSJ570
-    ),
+    link: "https://unsplash.com/photos/photo-of-gray-building-USrZRcRS2Lw",
   },
 
   {
     name: "Salt Lake City",
-    link: url(
-      unsplash.com / photos / a -
-        snow -
-        covered -
-        mountain -
-        range -
-        under -
-        a -
-        blue -
-        sky -
-        RN1QRK7aUfc
-    ),
+    link: "https://unsplash.com/photos/green-trees-near-body-of-water-during-daytime-GBrCu6h8H1Y",
   },
 
   {
     name: "Santa Barbara West Campus",
-    link: url(
-      unsplash.com / photos / green -
-        grass -
-        near -
-        body -
-        of -
-        water -
-        during -
-        daytime -
-        Wi7zEg3fKq0
-    ),
+    link: "https://unsplash.com/photos/people-walking-on-beach-during-daytime-qN2UhvqAU3Y",
   },
 
   {
     name: "Monument Valley",
-    link: url(
-      unsplash.com / photos / brown -
-        rock -
-        formation -
-        under -
-        blue -
-        sky -
-        during -
-        daytime -
-        yht4AxGHS8Y
-    ),
+    link: "https://unsplash.com/photos/three-mountains-at-desert-during-daytime-VpmPEs0yNYk",
   },
 
   {
     name: "Lucia Falls",
-    link: url(
-      unsplash.com / photos / a -
-        river -
-        flowing -
-        through -
-        a -
-        lush -
-        green -
-        forest -
-        KnEXbwSfqRo
-    ),
+    link: "https://unsplash.com/photos/a-river-flowing-through-a-lush-green-forest-KnEXbwSfqRo",
   },
 ];
+
+const profileEditButton = document.querySelector("#profile-edit-button");
+
+const profileEditModal = document.querySelector("#profile-edit-modal");
+const modalCloseButton = document.querySelector("#modal-close-button");
+
+profileEditButton.addEventListener("click", () => {
+  console.log("button clicked");
+  profileEditModal.classList.add("modal_opened");
+});
+
+modalCloseButton.addEventListener("click", function () {
+  profileEditModal.classList.remove("modal_opened");
+});
