@@ -54,10 +54,13 @@
 
 .modal__form-input {
   height: 27px;
-  width: 358px;
+  max-width: 358px;
+  width: 100%;
   margin-top: 30px;
+  padding: 0;
   border: 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  text-align: start;
 }
 
 .modal__form-input:focus {
