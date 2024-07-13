@@ -9,7 +9,8 @@
   .header {
     padding-bottom: 32px;
     margin-top: 28px;
-    max-height: 56px;
+    margin-bottom: 42px;
+    height: 56px;
   }
 }
 .header__image {
