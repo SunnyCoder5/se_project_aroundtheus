@@ -10,6 +10,7 @@ This is the third project of the Software Engineering program at TripleTen. It w
 - Positioning
 - Flat BEM file structure
 - Responsive design
+- Javascript
 
 ###
 

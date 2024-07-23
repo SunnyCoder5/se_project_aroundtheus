@@ -7,11 +7,16 @@
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1;
   padding: 36px;
-  display: none;
+  visibility: hidden;
+  display: flex;
+  opacity: 0;
+  transition: visibility 0.3s, opacity 0.5s linear;
 }
 
 .modal_opened {
   display: flex;
+  visibility: visible;
+  opacity: 1;
 }
 
 .modal__container {

@@ -39,7 +39,11 @@
               Explorer
             </p>
           </div>
-          <button type="button" class="profile__add-button"></button>
+          <button
+            type="button"
+            class="profile__add-button"
+            id="card-add-button"
+          ></button>
         </section>
         <section class="cards page__section">
           <ul class="cards__list" id="card-list"></ul>
@@ -78,16 +82,64 @@
       </div>
     </div>
 
+    <div class="modal" id="card-adding-modal">
+      <div class="modal__container">
+        <button
+          type="button"
+          class="modal__container-close"
+          id="card-modal-close-button"
+        ></button>
+        <p class="modal__title">New place</p>
+        <form class="modal__form" id="modal-card-form-element">
+          <input
+            type="text"
+            placeholder="Title"
+            required
+            class="modal__form-input"
+            id="modal-card-input-title"
+          />
+          <input
+            type="url"
+            placeholder="Image link"
+            required
+            class="modal__form-input"
+            id="modal-card-input-link"
+          />
+          <button type="submit" class="modal__form-button">Create</button>
+        </form>
+      </div>
+    </div>
+
     <template id="card-template">
       <li class="card">
         <img src="" alt="" class="card__image" />
+        <button
+          type="button"
+          class="card__delete-button"
+          id="card-delete-button"
+        ></button>
         <div class="card__description">
-          <h2 class="card__title">Lake Louise</h2>
-          <button type="button" class="card__like-button"></button>
+          <h2 class="card__title"></h2>
+          <button
+            type="button"
+            class="card__like-button"
+            id="card-like-button"
+          ></button>
         </div>
-        <h2 class="card__title"></h2>
       </li>
     </template>
+
+    <div class="popup" id="card-picture-popup">
+      <div class="popup__container">
+        <button
+          type="button"
+          class="popup__container-close"
+          id="popup-close-button"
+        ></button>
+        <img src="" alt="" class="popup__container-image" id="popup-image" />
+        <p class="popup__container-title" id="popup-title"></p>
+      </div>
+    </div>
 
     <script src="./scripts/index.js"></script>
   </body>
