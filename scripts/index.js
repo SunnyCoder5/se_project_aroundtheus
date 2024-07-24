@@ -55,7 +55,7 @@ const modalCloseButtonsArray = Array.from(modalCloseButtons);
 profileEditButton.addEventListener("click", function () {
   profileTitleInput.value = profileTitle.textContent.trim();
   profileDescriptionInput.value = profileDescription.textContent.trim();
-  profileEditModal.classList.add("modal_opened");
+  openModal(profileEditModal);
 });
 
 //Functions
@@ -133,8 +133,6 @@ profileFormElement.addEventListener("submit", handleProfileFormSubmit);
 initialCards.forEach((data) => renderCard(data, cardList));
 
 modalCloseButtonsArray.forEach((item) => {
-  item.addEventListener("click", function () {
-    const modal = document.querySelector(".modal_opened");
-    closeModal(modal);
-  });
+  const modal = item.closest(".modal");
+  item.addEventListener("click", () => closeModal(modal));
 });
