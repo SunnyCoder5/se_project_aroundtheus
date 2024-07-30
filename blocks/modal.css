@@ -219,8 +219,10 @@ input::-ms-input-placeholder {
     width: 238px;
     margin-top: 45px;
     margin-bottom: 25px;
+    font-size: 14px;
   }
 
-  .modal__label { 
+  .modal__label {
     width: 238px;
+  }
 }

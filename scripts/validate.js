@@ -3,7 +3,6 @@ const showInputError = (formEl, inputEl, { inputErrorClass, errorClass }) => {
   inputEl.classList.add(inputErrorClass);
   errorMessageEl.textContent = inputEl.validationMessage;
   errorMessageEl.classList.add(errorClass);
-  pwd;
 };
 
 const hideInputError = (formEl, inputEl, { inputErrorClass, errorClass }) => {
