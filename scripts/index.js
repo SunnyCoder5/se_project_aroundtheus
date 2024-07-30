@@ -51,6 +51,8 @@ const popupImage = document.querySelector("#modal-picture-container-image");
 const popupTitle = document.querySelector("#modal-picture-container-title");
 const modalCloseButtons = document.querySelectorAll(".modal__container-close");
 const modalCloseButtonsArray = Array.from(modalCloseButtons);
+const modals = document.querySelectorAll(".modal");
+const modalsArray = Array.from(modals);
 
 profileEditButton.addEventListener("click", function () {
   profileTitleInput.value = profileTitle.textContent.trim();
@@ -135,4 +137,19 @@ initialCards.forEach((data) => renderCard(data, cardList));
 modalCloseButtonsArray.forEach((item) => {
   const modal = item.closest(".modal");
   item.addEventListener("click", () => closeModal(modal));
+});
+
+modals.forEach((modal) => {
+  modal.addEventListener("mousedown", (evt) => {
+    if (evt.target.classList.contains("modal")) {
+      closeModal(modal);
+    }
+  });
+});
+
+document.addEventListener("keydown", (evt) => {
+  if (evt.key === "Escape") {
+    const modal = document.querySelector(".modal_opened");
+    closeModal(modal);
+  }
 });
