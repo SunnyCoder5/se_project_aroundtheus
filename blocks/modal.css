@@ -60,29 +60,32 @@
 
 .modal__form-input {
   padding: 0;
-  border: 0;
   text-align: start;
+  width: 100%;
   font-size: 14px;
   font-family: "Inter", Arial, sans-serif;
   font-weight: 400;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  height: 27px;
+}
+
+.modal__form-input_type_error {
+  border-bottom-color: red;
+  margin-bottom: 0px;
 }
 
 .modal__form-input:focus {
   outline: none;
 }
 
-.modal__form-input_type_error {
-  border-bottom-color: red;
-}
-
 .modal__label {
   position: relative;
-  font-size: 14px;
-  height: 27px;
   max-width: 358px;
   width: 100%;
   margin-top: 30px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .modal__label:first-of-type {
@@ -217,4 +220,7 @@ input::-ms-input-placeholder {
     margin-top: 45px;
     margin-bottom: 25px;
   }
+
+  .modal__label { 
+    width: 238px;
 }

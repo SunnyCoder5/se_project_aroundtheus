@@ -62,10 +62,21 @@ profileEditButton.addEventListener("click", function () {
 
 //Functions
 
+function keyHandler(evt) {
+  const key = evt.key;
+  if (key === "Escape") {
+    const openedModal = document.querySelector(".modal_opened");
+    closeModal(openedModal);
+  }
+}
+
 function closeModal(modal) {
+  document.removeEventListener("keydown", keyHandler);
   modal.classList.remove("modal_opened");
 }
+
 function openModal(modal) {
+  document.addEventListener("keydown", keyHandler);
   modal.classList.add("modal_opened");
 }
 
@@ -147,9 +158,10 @@ modals.forEach((modal) => {
   });
 });
 
-document.addEventListener("keydown", (evt) => {
+/*document.addEventListener("keydown", (evt) => {
   if (evt.key === "Escape") {
     const modal = document.querySelector(".modal_opened");
     closeModal(modal);
   }
 });
+*/
