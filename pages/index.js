@@ -42,7 +42,6 @@ const profileDescriptionInput = document.querySelector(
   "#modal-form-input-description"
 );
 const profileFormElement = document.forms["modal-form-element"];
-const cardTemplate = document.querySelector("#card-template").content;
 const cardList = document.querySelector("#card-list");
 const cardAddButton = document.querySelector("#card-add-button");
 const cardAddModal = document.querySelector("#card-adding-modal");
@@ -54,7 +53,6 @@ const picturePopup = document.querySelector("#card-picture-modal");
 const modalCloseButtons = document.querySelectorAll(".modal__container-close");
 const modalCloseButtonsArray = Array.from(modalCloseButtons);
 const modals = document.querySelectorAll(".modal");
-const modalsArray = Array.from(modals);
 
 profileEditButton.addEventListener("click", function () {
   profileTitleInput.value = profileTitle.textContent.trim();
