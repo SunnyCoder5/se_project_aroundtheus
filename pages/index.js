@@ -1,3 +1,6 @@
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+
 const initialCards = [
   {
     name: "Antelope Canyon",
@@ -47,8 +50,7 @@ const cardTitleInput = document.querySelector("#modal-card-input-title");
 const cardLinkInput = document.querySelector("#modal-card-input-link");
 const cardFormElement = document.forms["modal-card-form-element"];
 const picturePopup = document.querySelector("#card-picture-modal");
-const popupImage = document.querySelector("#modal-picture-container-image");
-const popupTitle = document.querySelector("#modal-picture-container-title");
+
 const modalCloseButtons = document.querySelectorAll(".modal__container-close");
 const modalCloseButtonsArray = Array.from(modalCloseButtons);
 const modals = document.querySelectorAll(".modal");
@@ -80,50 +82,30 @@ function openModal(modal) {
   modal.classList.add("modal_opened");
 }
 
+function handleImageClick(name, link) {
+  const popupImage = document.querySelector("#modal-picture-container-image");
+  const popupTitle = document.querySelector("#modal-picture-container-title");
+  popupImage.src = link;
+  popupTitle.textContent = name;
+  popupImage.alt = name;
+  openModal(picturePopup);
+}
+
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
-  profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
+  profileTitle.textContent = profileTitleInput.value;
   closeModal(profileEditModal);
 }
 
-function getCardElement(data) {
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImageElement = cardElement.querySelector(".card__image");
-  const cardTitleElement = cardElement.querySelector(".card__title");
-  const cardlikeButton = cardElement.querySelector("#card-like-button");
-  const deleteButton = cardElement.querySelector("#card-delete-button");
-
-  cardTitleElement.textContent = data.name;
-  cardImageElement.src = data.link;
-  cardImageElement.alt = data.name;
-
-  cardlikeButton.addEventListener("click", () => {
-    cardlikeButton.classList.toggle("card__like-button_clicked");
-  });
-
-  deleteButton.addEventListener("click", () => {
-    const cardElement = deleteButton.closest(".card");
-    cardElement.remove();
-  });
-
-  cardImageElement.addEventListener("click", function (evt) {
-    popupImage.src = cardImageElement.src;
-    popupTitle.textContent = cardTitleElement.textContent;
-    popupImage.alt = cardTitleElement.textContent;
-    openModal(picturePopup);
-  });
-
-  return cardElement;
-}
-
-function handleCardFormSubmit(evt) {
+function handleAddCardFormSubmit(evt) {
   evt.preventDefault();
   const name = cardTitleInput.value;
   const link = cardLinkInput.value;
   renderCard({ name, link }, cardList);
   closeModal(cardAddModal);
-  evt.target.reset();
+  cardAddModal.reset();
+  addCardFormValidator.resetValidation();
 }
 
 function renderCard(data, cardList) {
@@ -131,15 +113,43 @@ function renderCard(data, cardList) {
   cardList.prepend(cardElement);
 }
 
+function getCardElement(item) {
+  const cardElement = new Card(item, "#card-template", handleImageClick);
+  return cardElement.getView();
+}
+
+//form validation classes
+
+const validationSettings = {
+  inputSelector: ".modal__form-input",
+  submitButtonSelector: ".modal__form-button",
+  inactiveButtonClass: "modal__form-button_disabled",
+  inputErrorClass: "modal__form-input_type_error",
+  errorClass: "modal__error_visible",
+};
+
+const editFormValidator = new FormValidator(
+  profileFormElement,
+  validationSettings
+);
+editFormValidator.enableValidation();
+
+const addCardFormValidator = new FormValidator(
+  cardFormElement,
+  validationSettings
+);
+
+addCardFormValidator.enableValidation();
+
 //Form listeners
 
 cardAddButton.addEventListener("click", function () {
   openModal(cardAddModal);
 });
 
-cardFormElement.addEventListener("submit", handleCardFormSubmit);
-
 profileFormElement.addEventListener("submit", handleProfileFormSubmit);
+
+cardAddModal.addEventListener("submit", handleAddCardFormSubmit);
 
 //Loops
 
@@ -157,11 +167,3 @@ modals.forEach((modal) => {
     }
   });
 });
-
-/*document.addEventListener("keydown", (evt) => {
-  if (evt.key === "Escape") {
-    const modal = document.querySelector(".modal_opened");
-    closeModal(modal);
-  }
-});
-*/
