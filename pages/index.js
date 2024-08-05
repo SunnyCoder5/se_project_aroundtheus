@@ -102,7 +102,7 @@ function handleAddCardFormSubmit(evt) {
   const link = cardLinkInput.value;
   renderCard({ name, link }, cardList);
   closeModal(cardAddModal);
-  cardAddModal.reset();
+  cardFormElement.reset();
   addCardFormValidator.resetValidation();
 }
 

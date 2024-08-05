@@ -10,7 +10,7 @@ export default class Card {
     this._cardElement
       .querySelector("#card-like-button")
       .addEventListener("click", () => {
-        this._handleLikeIcon;
+        this._handleLikeIcon();
       });
 
     this._cardElement
