@@ -5,6 +5,7 @@ import { initialCards, validationSettings } from "../utils/constants.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImages from "../components/PopupWithImages.js";
 import UserInfo from "../components/UserInfo.js";
+import "./index.css";
 
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileTitle = document.querySelector("#profile-title");
@@ -87,8 +88,7 @@ function handleImageClick({ name, link }) {
   imagePreviewPopup.open({ name, link });
 }
 
-function handleProfileFormSubmit(evt) {
-  evt.preventDefault();
+function handleProfileFormSubmit(data) {
   userInfo.setUserInfo({ name: data.name, job: data.description });
   imagePreviewPopup.close();
 }
