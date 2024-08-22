@@ -1,0 +1,33 @@
+.footer {
+  display: flex;
+  box-sizing: border-box;
+  background-color: black;
+  font-size: 18px;
+  line-height: 22px;
+  color: #545454;
+  padding: 0;
+  margin: 67px auto;
+  max-width: 880px;
+  width: 100%;
+  position: relative;
+}
+
+.footer__copyright {
+  margin: 0;
+}
+
+@media screen and (max-width: 480px) {
+  .footer {
+    font-size: 14px;
+    line-height: 17px;
+    margin: 48px 19px 36px;
+    max-width: calc(100% - 38px);
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 1100px) {
+  .footer {
+    margin: 67px 20px;
+    max-width: calc(100% - 40px);
+  }
+}
