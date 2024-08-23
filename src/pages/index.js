@@ -1,7 +1,7 @@
 import Section from "../components/Section.js";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
-import { initialCards, validationSettings } from "../utils/constants.js";
+import { validationSettings } from "../utils/constants.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImages from "../components/PopupWithImages.js";
 import UserInfo from "../components/UserInfo.js";
@@ -27,7 +27,7 @@ const cardFormElement = document.forms["modal-card-form-element"];
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
   headers: {
-    authorization: "9d7f6cf0-ae73-439e-b6a3-9c199a8125bf",
+    authorization: "e5bcded0-3ccc-46ac-b505-89ebe536f2b5",
     "Content-Type": "application/json",
   },
 });
