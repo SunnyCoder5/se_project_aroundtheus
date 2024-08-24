@@ -111,16 +111,16 @@ function handleAddCardFormSubmit(inputValues) {
   const name = inputValues.name;
   const link = inputValues.link;
   // const cardData = { name: name, link: link };
-  api.addCard().then((cardData) => {
-    renderCard(cardData);{ name, link }
+  api.addCard({ name, link }).then((cardData) => {
+    renderCard(cardData);
     newCardPopup.close();
     cardFormElement.reset();
     addCardFormValidator.disableButton();
   });
 }
 
-function createCard(cardData) {
-  const card = new Card(cardData, "#card-template", handleImageClick);
+function createCard({ name, link }) {
+  const card = new Card({ name, link }, "#card-template", handleImageClick);
   return card.getView();
 }
 function renderCard(cardData) {
