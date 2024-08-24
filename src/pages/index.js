@@ -79,6 +79,10 @@ const userInfo = new UserInfo({
   jobSelector: "#profile-description",
 });
 
+api.getUserInfo().then((userData) => {
+  userInfo.setUserInfo({ name: userData.name, job: userData.about });
+});
+
 //Event listeners
 
 profileEditButton.addEventListener("click", function () {
@@ -106,11 +110,13 @@ function handleProfileFormSubmit(data) {
 function handleAddCardFormSubmit(inputValues) {
   const name = inputValues.name;
   const link = inputValues.link;
-  const cardData = { name: name, link: link };
-  renderCard(cardData);
-  newCardPopup.close();
-  cardFormElement.reset();
-  addCardFormValidator.disableButton();
+  // const cardData = { name: name, link: link };
+  api.addCard().then((cardData) => {
+    renderCard(cardData);{ name, link }
+    newCardPopup.close();
+    cardFormElement.reset();
+    addCardFormValidator.disableButton();
+  });
 }
 
 function createCard(cardData) {
