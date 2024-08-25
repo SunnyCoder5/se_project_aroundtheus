@@ -7,6 +7,7 @@ import PopupWithImages from "../components/PopupWithImages.js";
 import UserInfo from "../components/UserInfo.js";
 import Api from "../components/Api.js";
 import "./index.css";
+import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileTitle = document.querySelector("#profile-title");
@@ -74,6 +75,9 @@ profileEditPopup.setEventListeners();
 const imagePreviewPopup = new PopupWithImages("#card-picture-modal");
 imagePreviewPopup.setEventListeners();
 
+const cardDeletePopup = new PopupWithConfirmation("#delete-card-modal");
+cardDeletePopup.setEventListeners();
+
 const userInfo = new UserInfo({
   nameSelector: "#profile-title",
   jobSelector: "#profile-description",
@@ -110,7 +114,7 @@ function handleProfileFormSubmit(data) {
 function handleAddCardFormSubmit(inputValues) {
   const name = inputValues.name;
   const link = inputValues.link;
-  // const cardData = { name: name, link: link };
+  //const cardData = { name: name, link: link };
   api.addCard({ name, link }).then((cardData) => {
     renderCard(cardData);
     newCardPopup.close();
@@ -119,11 +123,61 @@ function handleAddCardFormSubmit(inputValues) {
   });
 }
 
-function createCard({ name, link }) {
-  const card = new Card({ name, link }, "#card-template", handleImageClick);
+function createCard(cardData) {
+  const card = new Card(
+    cardData,
+    "#card-template",
+    handleImageClick,
+    handleDeleteCardclick,
+    handleLikeCard,
+    handleUnLikeCard
+  );
   return card.getView();
 }
 function renderCard(cardData) {
   const cardElement = createCard(cardData);
   section.addItem(cardElement);
+}
+
+function handleDeleteCardclick(card) {
+  cardDeletePopup.open();
+  cardDeletePopup.setSubmitAction(() => {
+    cardDeletePopup.setLoading(true, "Deleting...");
+    api
+      .removeCard(card._id)
+      .then(() => {
+        card._handleDeleteCard();
+        cardDeletePopup.close();
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+      .finally(() => {
+        cardDeletePopup.setLoading(false, "Yes");
+      });
+  });
+}
+
+function handleLikeCard(card) {
+  if (card.isLiked) {
+  }
+  api
+    .likeCard(card._id)
+    .then(() => {
+      card._setCardLike(true);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+}
+
+function handleUnLikeCard(card) {
+  api
+    .unlikeCard(card._id)
+    .then(() => {
+      card._setCardLike(false);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 }
