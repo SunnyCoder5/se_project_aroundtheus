@@ -70,7 +70,7 @@ export default class Api {
       headers: this._headers,
       body: JSON.stringify({
         name: userData.name,
-        about: userData.job,
+        about: userData.description,
       }),
     }).then(this.checkServerResponse);
   }
@@ -79,7 +79,7 @@ export default class Api {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
-      body: JSON.stringify({ avatar: userData.avatar }),
+      body: JSON.stringify({ avatar: userData.link }),
     }).then(this.checkServerResponse);
   }
 

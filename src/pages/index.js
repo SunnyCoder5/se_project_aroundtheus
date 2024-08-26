@@ -10,8 +10,8 @@ import "./index.css";
 import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 
 const profileEditButton = document.querySelector("#profile-edit-button");
-const profileTitle = document.querySelector("#profile-title");
-const profileDescription = document.querySelector("#profile-description");
+//const profileTitle = document.querySelector("#profile-title");
+//const profileDescription = document.querySelector("#profile-description");
 const profileTitleInput = document.querySelector("#modal-form-input-name");
 const profileDescriptionInput = document.querySelector(
   "#modal-form-input-description"
@@ -93,15 +93,13 @@ const userInfo = new UserInfo({
 });
 
 api.getUserInfo().then((userData) => {
-  userInfo.setUserInfo({ name: userData.name, job: userData.about });
+  userInfo.setUserInfo({ name: userData.name, about: userData.about });
+  userInfo.setUserAvatar({ avatar: userData.avatar });
 });
 
 //Event listeners
 
 profileEditButton.addEventListener("click", function () {
-  profileTitleInput.value = profileTitle.textContent.trim();
-  profileDescriptionInput.value = profileDescription.textContent.trim();
-  editFormValidator.resetValidation();
   profileEditPopup.open();
 });
 
@@ -132,7 +130,7 @@ function handleProfileFormSubmit(data) {
   api
     .updateUserInfo(data)
     .then((res) => {
-      userInfo.setUserInfo({ name: res.name, job: res.description });
+      userInfo.setUserInfo({ name: res.name, about: res.about });
       profileEditPopup.close();
     })
     .catch((err) => {
@@ -146,30 +144,37 @@ function handleProfileFormSubmit(data) {
 function handleAddCardFormSubmit(inputValues) {
   const name = inputValues.name;
   const link = inputValues.link;
-  api.addCard({ name, link }).then((cardData) => {
-    renderCard(cardData);
-    newCardPopup.close();
-    cardFormElement.reset();
-    addCardFormValidator.disableButton();
-  });
+  newCardPopup.setLoading(true);
+  api
+    .addCard({ name, link })
+    .then((cardData) => {
+      renderCard(cardData);
+      newCardPopup.close();
+      cardFormElement.reset();
+      addCardFormValidator.disableButton();
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+    .finally(() => {
+      newCardPopup.setLoading(false);
+    });
 }
 
 function handleAvatarFormSubmit(userData) {
   avatarPopup.setLoading(true);
-  api.updateUserAvatar(userData).then(
-    ((res) => {
+  api
+    .updateUserAvatar(userData)
+    .then((res) => {
       userInfo.setUserAvatar({ avatar: res.avatar });
+      avatarPopup.close();
     })
-      .then(() => {
-        avatarPopup.close();
-      })
-      .catch((err) => {
-        console.error(err);
-      })
-      .finally(() => {
-        avatarPopup.setLoading(false);
-      })
-  );
+    .catch((err) => {
+      console.error(err);
+    })
+    .finally(() => {
+      avatarPopup.setLoading(false);
+    });
 }
 
 function createCard(cardData) {
