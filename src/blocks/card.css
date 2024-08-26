@@ -23,6 +23,10 @@
   right: 15px;
 }
 
+.card__delete-button:hover {
+  cursor: pointer;
+}
+
 .card__description {
   display: flex;
   flex-direction: row;

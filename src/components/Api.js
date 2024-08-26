@@ -63,4 +63,31 @@ export default class Api {
       headers: this._headers,
     }).then(this.checkServerResponse);
   }
+
+  updateUserInfo(userData) {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        name: userData.name,
+        about: userData.job,
+      }),
+    }).then(this.checkServerResponse);
+  }
+
+  updateUserAvatar(userData) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({ avatar: userData.avatar }),
+    }).then(this.checkServerResponse);
+  }
+
+  getUserAndCards() {
+    return Promise.all([this.getInitialCards(), this.getUserInfo()]).then(
+      ([userInfo, cards]) => {
+        return { userInfo, cards };
+      }
+    );
+  }
 }

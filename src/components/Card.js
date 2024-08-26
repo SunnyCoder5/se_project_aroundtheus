@@ -41,15 +41,15 @@ export default class Card {
   }
 
   _setCardLike(isLiked) {
-    this._isLiked = !isLiked;
+    this._isLiked = isLiked;
     this._handleLikeIcon();
   }
 
   _handleLikeIcon() {
     if (!this._isLiked) {
-      this._likeButton.classList.remove("card__like-button_active");
+      this._likeButton.classList.remove("card__like-button_clicked");
     } else {
-      this._likeButton.classList.add("card__like-button_active");
+      this._likeButton.classList.add("card__like-button_clicked");
     }
   }
 

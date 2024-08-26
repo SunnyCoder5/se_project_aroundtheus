@@ -15,6 +15,32 @@
   margin-right: 30px;
 }
 
+.profile__image-contaner {
+  position: relative;
+  display: flex;
+}
+
+.profile__image-edit {
+  position: absolute;
+  top: 47px;
+  left: 47px;
+  width: 26px;
+  height: 26px;
+  border: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: transparent url(../images/edit-icon.svg) center no-repeat;
+}
+
+.profile__image-contaner:hover .profile__image-edit {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.profile__image-contaner:hover .profile__image {
+  opacity: 60%;
+}
+
 .profile__info {
   display: grid;
   align-items: center;
