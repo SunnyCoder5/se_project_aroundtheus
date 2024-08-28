@@ -61,7 +61,7 @@
 }
 
 .card__like-button:hover {
-  background: transparent url(../images/like-inactive.svg) center no-repeat;
+  cursor: pointer;
 }
 
 .card__like-button_clicked {
