@@ -99,17 +99,20 @@ const userInfo = new UserInfo({
 
 //Event listeners
 
-profileEditButton.addEventListener("click", function () {
-  api
-    .getUserInfo()
-    .then((userData) => {
-      userInfo.setUserInfo({ name: userData.name, about: userData.about });
-      userInfo.setUserAvatar({ avatar: userData.avatar });
-    })
-    .catch((err) => {
-      console.error(err);
-    });
+api
+  .getUserInfo()
+  .then((userData) => {
+    userInfo.setUserInfo({ name: userData.name, about: userData.about });
+    userInfo.setUserAvatar({ avatar: userData.avatar });
+  })
+  .catch((err) => {
+    console.error(err);
+  });
 
+profileEditButton.addEventListener("click", function () {
+  const userData = userInfo.getUserInfo();
+  profileTitleInput.value = userData.name;
+  profileDescriptionInput.value = userData.job;
   profileEditPopup.open();
 });
 
@@ -161,6 +164,7 @@ function handleAddCardFormSubmit(inputValues) {
   function makeRequest() {
     return api.addCard({ name, link }).then((cardData) => {
       renderCard(cardData);
+      cardFormElement.reset();
     });
   }
   handleSubmit(makeRequest, newCardPopup);
