@@ -165,6 +165,7 @@ function handleAddCardFormSubmit(inputValues) {
     return api.addCard({ name, link }).then((cardData) => {
       renderCard(cardData);
       cardFormElement.reset();
+      addCardFormValidator.disableButton();
     });
   }
   handleSubmit(makeRequest, newCardPopup);
@@ -202,7 +203,7 @@ function handleDeleteCardclick(card) {
     api
       .removeCard(card._id)
       .then(() => {
-        card._handleDeleteCard();
+        card.handleDeleteCard();
         cardDeletePopup.close();
       })
       .catch((err) => {
@@ -218,7 +219,7 @@ function handleLikeCard(card) {
   api
     .likeCard(card._id)
     .then(() => {
-      card._setCardLike(true);
+      card.setCardLike(true);
     })
     .catch((err) => {
       console.error(err);
@@ -229,7 +230,7 @@ function handleUnLikeCard(card) {
   api
     .unlikeCard(card._id)
     .then(() => {
-      card._setCardLike(false);
+      card.setCardLike(false);
     })
     .catch((err) => {
       console.error(err);
