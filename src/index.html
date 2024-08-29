@@ -22,13 +22,18 @@
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img
-            src="<%=require('./images/jacques_cousteau.jpg')%>"
-            alt="Avatar"
-            class="profile__image"
-          />
+          <div class="profile__image-contaner">
+            <img
+              src="<%=require('./images/jacques_cousteau.jpg')%>"
+              alt="Avatar"
+              class="profile__image"
+              id="profile-image"
+            />
+            <button class="profile__image-edit" id="image-edit-icon"></button>
+          </div>
+
           <div class="profile__info">
-            <h1 class="profile__title" id="profile-title">Jacques Cousteau</h1>
+            <h1 class="profile__title" id="profile-title">Cousteau</h1>
             <button
               type="button"
               class="profile__edit-button"
@@ -158,6 +163,58 @@
           class="modal__picture-container-title"
           id="modal-picture-container-title"
         ></p>
+      </div>
+    </div>
+
+    <div class="modal" id="delete-card-modal">
+      <div class="modal__container modal__container_card-delete">
+        <button
+          type="button"
+          class="modal__container-close"
+          id="modal-close-button"
+        ></button>
+        <form class="modal__form">
+          <h2 class="modal__title_delete-card">Are you sure?</h2>
+          <button class="modal__form-delete-card-button" type="submit">
+            Yes
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal" id="profile-picture-modal">
+      <div class="modal__container modal__container-profile-picture">
+        <button
+          type="button"
+          class="modal__container-close"
+          id="modal-close-button"
+        ></button>
+        <p class="modal__title modal__profile-picture-title">
+          Change profile picture
+        </p>
+        <form class="modal__form" id="modal-profile-picture-element" novalidate>
+          <label class="modal__label">
+            <input
+              type="url"
+              name="link"
+              placeholder="Image link"
+              required
+              class="modal__form-input"
+              id="modal-profile-picture-input"
+            />
+            <span
+              class="modal__error"
+              id="modal-profile-picture-input-error"
+            ></span>
+          </label>
+          <button
+            type="submit"
+            class="modal__form-button modal__form-button_disabled"
+            id="modal-profile-picture-button"
+          >
+            Save
+          </button>
+        </form>
       </div>
     </div>
 
