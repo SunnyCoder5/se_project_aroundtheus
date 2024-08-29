@@ -199,19 +199,13 @@ function renderCard(cardData) {
 function handleDeleteCardclick(card) {
   cardDeletePopup.open();
   cardDeletePopup.setSubmitAction(() => {
-    cardDeletePopup.setLoading(true);
-    api
-      .removeCard(card._id)
-      .then(() => {
+    function makeRequest() {
+      return api.removeCard(card._id).then(() => {
         card.handleDeleteCard();
         cardDeletePopup.close();
-      })
-      .catch((err) => {
-        console.error(err);
-      })
-      .finally(() => {
-        cardDeletePopup.setLoading(false, "Yes");
       });
+    }
+    handleSubmit(makeRequest, cardDeletePopup, "Deleting...");
   });
 }
 
@@ -228,7 +222,7 @@ function handleLikeCard(card) {
 
 function handleUnLikeCard(card) {
   api
-    .unlikeCard(card._id)
+    .unLikeCard(card._id)
     .then(() => {
       card.setCardLike(false);
     })
